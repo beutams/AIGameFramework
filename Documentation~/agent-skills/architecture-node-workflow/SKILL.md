@@ -5,7 +5,7 @@ description: 在安装 com.aigameframework.architecture 包的 Unity 项目中�
 
 # 架构 Node 功能实现
 
-处理宿主项目的功能模块、接口或模块间依赖时，先读包内的 `Packages/com.aigameframework.architecture/Documentation~/AI_WORKFLOW.md` 和宿主项目中的 `Assets/AIArchitecture/architecture.json`。若包安装在 Assets 或其他位置，按实际路径调整。规范解释字段语义；JSON 提供 Node 实例、预制定义与引用关系。仅讨论编辑器界面而未涉及功能模块时，无须套用本流程。
+处理宿主项目的功能模块、接口或模块间依赖时，先读包内的 `Packages/com.aigameframework.architecture/Documentation~/AI_WORKFLOW.md` 和包根目录的 `architecture.json`。若包安装在 Assets 或其他位置，按实际路径调整。规范解释字段语义；JSON 提供 Node 实例、预制定义与引用关系。仅讨论编辑器界面而未涉及功能模块时，无须套用本流程。
 
 1. 找到受影响的 Node，读其 `functionText`、父链及有效接口；预制实例还要读对应 `presetText`、预制接口和固定子节点。结合现有代码确认实际职责。功能文本为空或互相冲突时，不把空白当成无限制授权。
 2. 为新需求选择边界内的现有 Node，或定义职责明确的新 Node 与合理父节点。父子关系表示功能延伸，不能代替跨模块接口依赖。

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0] - 2026-11-20
+
+### Changed
+
+- 架构数据改存到包根目录的 `architecture.json`，不再写入宿主项目的 `Assets/AIArchitecture/`。
+- 数据路径按 `ArchitectureStore.cs` 所在包目录解析，不再依赖固定安装路径。
+
 ## [0.1.0] - 2026-11-20
 
 ### Added

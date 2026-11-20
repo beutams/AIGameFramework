@@ -62,11 +62,11 @@ namespace AIGameFramework.Architecture
         private bool _canvasShortcutFocus;
         private int _pasteCount;
 
-        [MenuItem("Tools/AI 架构编辑器")]
+        [MenuItem("Tools/FrameTool")]
         public static void Open()
         {
             var window = GetWindow<ArchitectureGraphWindow>();
-            window.titleContent = new GUIContent("架构编辑器");
+            window.titleContent = new GUIContent("FrameTool");
             window.minSize = new Vector2(980, 620);
             window.Show();
         }

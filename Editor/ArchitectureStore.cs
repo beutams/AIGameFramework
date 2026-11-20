@@ -1,13 +1,25 @@
 using System;
 using System.IO;
 using System.Text;
+using UnityEditor;
 using UnityEngine;
 
 namespace AIGameFramework.Architecture
 {
     public static class ArchitectureStore
     {
-        public const string AssetPath = "Assets/AIArchitecture/architecture.json";
+        private const string DataAssetPath = "architecture.json";
+        private static string _assetPath;
+
+        public static string AssetPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_assetPath))
+                    _assetPath = ResolveAssetPath();
+                return _assetPath;
+            }
+        }
 
         public static DateTime LastWriteTimeUtc()
         {
@@ -61,6 +73,22 @@ namespace AIGameFramework.Architecture
         {
             var projectRoot = Path.GetDirectoryName(Application.dataPath) ?? Application.dataPath;
             return Path.Combine(projectRoot, AssetPath.Replace('/', Path.DirectorySeparatorChar));
+        }
+
+        private static string ResolveAssetPath()
+        {
+            const string suffix = "/Editor/ArchitectureStore.cs";
+            foreach (var guid in AssetDatabase.FindAssets("ArchitectureStore t:MonoScript"))
+            {
+                var scriptPath = AssetDatabase.GUIDToAssetPath(guid).Replace('\\', '/');
+                if (!scriptPath.EndsWith(suffix, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                var packageRoot = scriptPath.Substring(0, scriptPath.Length - suffix.Length);
+                return packageRoot + "/" + DataAssetPath;
+            }
+
+            throw new InvalidOperationException("无法确定 AIGameFramework 包目录。");
         }
     }
 }

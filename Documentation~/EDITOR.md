@@ -18,4 +18,4 @@ AI 如何依据 Node、接口、父子关系和预制模块实现功能，见 [A
 
 ## 数据文件
 
-架构数据默认保存在宿主项目的 `Assets/AIArchitecture/architecture.json`。它分别保存节点的 `functionText` 和预制定义的 `presetText`，还保存节点归属、接口标题与内容以及接口引用。尚未连接的节点也会保存；打开旧版文件时，旧预制功能文本会迁移到 `presetText`，旧接口说明会转换为列表项并生成标题。首次打开时若文件不存在，编辑器会自动创建；格式示例见 [architecture.example.json](architecture.example.json)。
+架构数据保存在包根目录的 `architecture.json`。它分别保存节点的 `functionText` 和预制定义的 `presetText`，还保存节点归属、接口标题与内容以及接口引用。尚未连接的节点也会保存；打开旧版文件时，旧预制功能文本会迁移到 `presetText`，旧接口说明会转换为列表项并生成标题。首次打开时若文件不存在，编辑器会自动创建；格式示例见 [architecture.example.json](architecture.example.json)。
